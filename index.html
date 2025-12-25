@@ -4,160 +4,507 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BeautyTrend AI - Amorepacific AI Innovation Challenge 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 20% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 40%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .floating-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            top: 10%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #ec4899, #8b5cf6);
+            bottom: 20%;
+            left: 5%;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            top: 50%;
+            left: 40%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -30px) scale(1.1); }
+            50% { transform: translate(-30px, 50px) scale(0.9); }
+            75% { transform: translate(-50px, -20px) scale(1.05); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 40px 20px;
         }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
+
+        /* Header */
         .header {
             text-align: center;
-            color: white;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
+            padding-top: 40px;
         }
+
+        .logo {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
         .header h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #fff 0%, #e0e7ff 50%, #c4b5fd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
         }
+
         .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+            margin-bottom: 25px;
         }
+
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
         .badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 5px 15px;
-            border-radius: 20px;
-            margin-top: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 30px;
             font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
+
+        .badge:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .badge-icon {
+            font-size: 1.1rem;
+        }
+
+        /* Cards Grid */
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
         }
+
         .card {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 35px;
             text-decoration: none;
-            color: #333;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            color: #fff;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
         }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #ec4899);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transform: translateY(-8px) scale(1.02);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3),
+                        0 0 100px rgba(102, 126, 234, 0.1);
         }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
         .card-icon {
-            font-size: 2.5rem;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .card p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .card-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+            border: 1px solid rgba(102, 126, 234, 0.5);
+            color: #c4b5fd;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* MVP Card - Featured */
+        .mvp-card {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+            border: 2px solid rgba(102, 126, 234, 0.5);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .mvp-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .mvp-content h3 {
+            font-size: 2rem;
             margin-bottom: 15px;
         }
-        .card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: #333;
+
+        .mvp-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
         }
-        .card p {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.5;
+
+        .mvp-feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
-        .card-tag {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 3px 10px;
-            border-radius: 10px;
-            font-size: 0.75rem;
-            margin-top: 15px;
+
+        .mvp-preview {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
         }
-        .mvp-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            grid-column: 1 / -1;
+
+        .mvp-preview-image {
+            font-size: 5rem;
+            margin-bottom: 15px;
         }
-        .mvp-card h3, .mvp-card p {
-            color: white;
+
+        .mvp-preview-text {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
         }
-        .mvp-card .card-tag {
-            background: rgba(255,255,255,0.2);
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 50px 0;
         }
+
+        @media (max-width: 768px) {
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 8px;
+        }
+
+        /* Footer */
         .footer {
             text-align: center;
-            color: white;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             margin-top: 40px;
-            opacity: 0.8;
+        }
+
+        .footer p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        .footer-brand {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 25px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="floating-orb orb-1"></div>
+        <div class="floating-orb orb-2"></div>
+        <div class="floating-orb orb-3"></div>
+    </div>
+
     <div class="container">
+        <!-- Header -->
         <div class="header">
-            <h1>💄 BeautyTrend AI</h1>
-            <p>글로벌 뷰티 트렌드 예측 AI 에이전트</p>
-            <span class="badge">AGENT TRACK | AI INNOVATION CHALLENGE 2026</span>
+            <div class="logo">💄</div>
+            <h1>BeautyTrend AI</h1>
+            <p>글로벌 뷰티 트렌드 예측 AI 에이전트 시스템</p>
+            <div class="badge-container">
+                <span class="badge">
+                    <span class="badge-icon">🤖</span>
+                    Multi-Agent Architecture
+                </span>
+                <span class="badge">
+                    <span class="badge-icon">🏆</span>
+                    AI INNOVATION CHALLENGE 2026
+                </span>
+                <span class="badge">
+                    <span class="badge-icon">📊</span>
+                    AGENT TRACK
+                </span>
+            </div>
         </div>
 
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-value">6+</div>
+                <div class="stat-label">AI 에이전트</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">85%+</div>
+                <div class="stat-label">예측 정확도</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">50%</div>
+                <div class="stat-label">개발 기간 단축</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">24/7</div>
+                <div class="stat-label">실시간 모니터링</div>
+            </div>
+        </div>
+
+        <!-- Cards -->
         <div class="cards">
+            <!-- MVP Card (Featured) -->
             <a href="https://amorepacific-ai.streamlit.app" target="_blank" class="card mvp-card">
-                <div class="card-icon">🚀</div>
-                <h3>MVP 라이브 데모</h3>
-                <p>Streamlit Cloud에서 실행 중인 BeautyTrend AI MVP를 직접 체험해보세요. 트렌드 예측, AI 챗봇, PDF 리포트 생성 기능을 확인할 수 있습니다.</p>
-                <span class="card-tag">LIVE DEMO</span>
+                <div class="mvp-content">
+                    <span class="card-icon">🚀</span>
+                    <h3>MVP 라이브 데모</h3>
+                    <p>Streamlit Cloud에서 실행 중인 BeautyTrend AI MVP를 직접 체험해보세요.
+                    트렌드 예측, 컬러 분석, 경쟁사 모니터링, AI 챗봇 기능을 확인할 수 있습니다.</p>
+                    <div class="mvp-features">
+                        <span class="mvp-feature">📊 대시보드</span>
+                        <span class="mvp-feature">🔮 트렌드 예측</span>
+                        <span class="mvp-feature">🎨 컬러 분석</span>
+                        <span class="mvp-feature">🏢 경쟁사 모니터링</span>
+                        <span class="mvp-feature">⚡ 시뮬레이션</span>
+                        <span class="mvp-feature">💬 AI 챗봇</span>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <span class="card-tag">✨ LIVE DEMO</span>
+                    </div>
+                </div>
+                <div class="mvp-preview">
+                    <div class="mvp-preview-image">📈</div>
+                    <div class="mvp-preview-text">실시간 트렌드 분석 대시보드</div>
+                </div>
             </a>
 
+            <!-- Presentation -->
             <a href="docs/BeautyTrend_AI_프레젠테이션.html" class="card">
-                <div class="card-icon">📊</div>
+                <span class="card-icon">📊</span>
                 <h3>프레젠테이션</h3>
-                <p>BeautyTrend AI의 핵심 기능과 기술 아키텍처를 담은 16슬라이드 프레젠테이션</p>
-                <span class="card-tag">16 SLIDES</span>
+                <p>BeautyTrend AI의 핵심 기능과 기술 아키텍처를 담은 16슬라이드 프레젠테이션입니다.</p>
+                <span class="card-tag">📑 16 SLIDES</span>
             </a>
 
+            <!-- Architecture -->
             <a href="docs/다이어그램/Multi-Agent_아키텍처_다이어그램.html" class="card">
-                <div class="card-icon">🏗️</div>
+                <span class="card-icon">🏗️</span>
                 <h3>시스템 아키텍처</h3>
-                <p>Multi-Agent 구조와 데이터 흐름을 시각화한 아키텍처 다이어그램</p>
-                <span class="card-tag">ARCHITECTURE</span>
+                <p>Multi-Agent 구조와 데이터 흐름을 시각화한 아키텍처 다이어그램입니다.</p>
+                <span class="card-tag">🔧 ARCHITECTURE</span>
             </a>
 
+            <!-- Features -->
             <a href="docs/다이어그램/5대_핵심기능_다이어그램.html" class="card">
-                <div class="card-icon">⭐</div>
+                <span class="card-icon">⭐</span>
                 <h3>5대 핵심 기능</h3>
-                <p>트렌드 수집, 예측, 컬러 분석, 경쟁사 모니터링, 리포트 생성</p>
-                <span class="card-tag">FEATURES</span>
+                <p>트렌드 수집, 예측, 컬러 분석, 경쟁사 모니터링, 리포트 생성 기능을 소개합니다.</p>
+                <span class="card-tag">🎯 FEATURES</span>
             </a>
 
+            <!-- Tech Stack -->
             <a href="docs/다이어그램/기술스택_다이어그램.html" class="card">
-                <div class="card-icon">🛠️</div>
+                <span class="card-icon">🛠️</span>
                 <h3>기술 스택</h3>
-                <p>Prophet, RAG, LangGraph, Vector DB 등 AI/ML 기술 스택</p>
-                <span class="card-tag">TECH STACK</span>
+                <p>Prophet, RAG, LangGraph, Vector DB 등 AI/ML 기술 스택을 설명합니다.</p>
+                <span class="card-tag">💻 TECH STACK</span>
             </a>
 
+            <!-- Roadmap -->
             <a href="docs/다이어그램/구현_로드맵_다이어그램.html" class="card">
-                <div class="card-icon">🗓️</div>
+                <span class="card-icon">🗓️</span>
                 <h3>구현 로드맵</h3>
-                <p>MVP부터 상용화까지 4단계 구현 계획</p>
-                <span class="card-tag">ROADMAP</span>
+                <p>MVP부터 상용화까지 4단계 구현 계획을 담았습니다.</p>
+                <span class="card-tag">📅 ROADMAP</span>
             </a>
 
+            <!-- ROI -->
             <a href="docs/다이어그램/기대효과_다이어그램.html" class="card">
-                <div class="card-icon">📈</div>
+                <span class="card-icon">📈</span>
                 <h3>기대 효과</h3>
-                <p>신제품 개발 50% 단축, 예측 정확도 85%+ 등 ROI 분석</p>
-                <span class="card-tag">ROI</span>
+                <p>신제품 개발 50% 단축, 예측 정확도 85%+ 등 ROI 분석 결과입니다.</p>
+                <span class="card-tag">💰 ROI</span>
             </a>
         </div>
 
+        <!-- Footer -->
         <div class="footer">
+            <div class="footer-brand">💄 BeautyTrend AI</div>
             <p>© 2026 BeautyTrend AI | Amorepacific AI Innovation Challenge</p>
+            <p style="margin-top: 10px; opacity: 0.5;">Multi-Agent 기반 글로벌 뷰티 트렌드 예측 AI 에이전트</p>
         </div>
     </div>
 </body>
