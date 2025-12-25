@@ -1,0 +1,118 @@
+{
+  "ingredient_trends": {
+    "세라마이드": [
+      {"month": "2024-01", "mentions": 12000, "sentiment": 0.78},
+      {"month": "2024-02", "mentions": 15000, "sentiment": 0.79},
+      {"month": "2024-03", "mentions": 18000, "sentiment": 0.80},
+      {"month": "2024-04", "mentions": 22000, "sentiment": 0.81},
+      {"month": "2024-05", "mentions": 25000, "sentiment": 0.82},
+      {"month": "2024-06", "mentions": 28000, "sentiment": 0.83},
+      {"month": "2024-07", "mentions": 32000, "sentiment": 0.84},
+      {"month": "2024-08", "mentions": 35000, "sentiment": 0.84},
+      {"month": "2024-09", "mentions": 38000, "sentiment": 0.85},
+      {"month": "2024-10", "mentions": 41000, "sentiment": 0.85},
+      {"month": "2024-11", "mentions": 43000, "sentiment": 0.86},
+      {"month": "2024-12", "mentions": 45000, "sentiment": 0.86}
+    ],
+    "펩타이드": [
+      {"month": "2024-01", "mentions": 8000, "sentiment": 0.75},
+      {"month": "2024-02", "mentions": 10000, "sentiment": 0.77},
+      {"month": "2024-03", "mentions": 13000, "sentiment": 0.79},
+      {"month": "2024-04", "mentions": 16000, "sentiment": 0.81},
+      {"month": "2024-05", "mentions": 19000, "sentiment": 0.82},
+      {"month": "2024-06", "mentions": 22000, "sentiment": 0.84},
+      {"month": "2024-07", "mentions": 25000, "sentiment": 0.85},
+      {"month": "2024-08", "mentions": 28000, "sentiment": 0.86},
+      {"month": "2024-09", "mentions": 31000, "sentiment": 0.87},
+      {"month": "2024-10", "mentions": 34000, "sentiment": 0.87},
+      {"month": "2024-11", "mentions": 36000, "sentiment": 0.88},
+      {"month": "2024-12", "mentions": 38000, "sentiment": 0.88}
+    ],
+    "바쿠치올": [
+      {"month": "2024-01", "mentions": 2000, "sentiment": 0.80},
+      {"month": "2024-02", "mentions": 3500, "sentiment": 0.82},
+      {"month": "2024-03", "mentions": 5000, "sentiment": 0.84},
+      {"month": "2024-04", "mentions": 7000, "sentiment": 0.85},
+      {"month": "2024-05", "mentions": 9500, "sentiment": 0.86},
+      {"month": "2024-06", "mentions": 12000, "sentiment": 0.87},
+      {"month": "2024-07", "mentions": 15000, "sentiment": 0.88},
+      {"month": "2024-08", "mentions": 18000, "sentiment": 0.89},
+      {"month": "2024-09", "mentions": 21000, "sentiment": 0.90},
+      {"month": "2024-10", "mentions": 24000, "sentiment": 0.90},
+      {"month": "2024-11", "mentions": 26000, "sentiment": 0.91},
+      {"month": "2024-12", "mentions": 28000, "sentiment": 0.91}
+    ],
+    "레티놀": [
+      {"month": "2024-01", "mentions": 48000, "sentiment": 0.72},
+      {"month": "2024-02", "mentions": 49000, "sentiment": 0.72},
+      {"month": "2024-03", "mentions": 50000, "sentiment": 0.71},
+      {"month": "2024-04", "mentions": 50500, "sentiment": 0.71},
+      {"month": "2024-05", "mentions": 51000, "sentiment": 0.71},
+      {"month": "2024-06", "mentions": 51200, "sentiment": 0.71},
+      {"month": "2024-07", "mentions": 51500, "sentiment": 0.71},
+      {"month": "2024-08", "mentions": 51300, "sentiment": 0.71},
+      {"month": "2024-09", "mentions": 51100, "sentiment": 0.71},
+      {"month": "2024-10", "mentions": 51000, "sentiment": 0.71},
+      {"month": "2024-11", "mentions": 50800, "sentiment": 0.71},
+      {"month": "2024-12", "mentions": 51000, "sentiment": 0.71}
+    ],
+    "나이아신아마이드": [
+      {"month": "2024-01", "mentions": 55000, "sentiment": 0.80},
+      {"month": "2024-02", "mentions": 56000, "sentiment": 0.80},
+      {"month": "2024-03", "mentions": 57000, "sentiment": 0.81},
+      {"month": "2024-04", "mentions": 58000, "sentiment": 0.81},
+      {"month": "2024-05", "mentions": 59000, "sentiment": 0.81},
+      {"month": "2024-06", "mentions": 60000, "sentiment": 0.82},
+      {"month": "2024-07", "mentions": 60500, "sentiment": 0.82},
+      {"month": "2024-08", "mentions": 61000, "sentiment": 0.82},
+      {"month": "2024-09", "mentions": 61500, "sentiment": 0.82},
+      {"month": "2024-10", "mentions": 62000, "sentiment": 0.82},
+      {"month": "2024-11", "mentions": 62000, "sentiment": 0.82},
+      {"month": "2024-12", "mentions": 62000, "sentiment": 0.82}
+    ]
+  },
+  "hashtag_trends": {
+    "글래스스킨": [
+      {"month": "2024-01", "count": 25000},
+      {"month": "2024-02", "count": 35000},
+      {"month": "2024-03", "count": 48000},
+      {"month": "2024-04", "count": 62000},
+      {"month": "2024-05", "count": 78000},
+      {"month": "2024-06", "count": 92000},
+      {"month": "2024-07", "count": 105000},
+      {"month": "2024-08", "count": 118000},
+      {"month": "2024-09", "count": 132000},
+      {"month": "2024-10", "count": 142000},
+      {"month": "2024-11", "count": 150000},
+      {"month": "2024-12", "count": 158000}
+    ],
+    "스킨미니멀리즘": [
+      {"month": "2024-01", "count": 15000},
+      {"month": "2024-02", "count": 22000},
+      {"month": "2024-03", "count": 32000},
+      {"month": "2024-04", "count": 42000},
+      {"month": "2024-05", "count": 52000},
+      {"month": "2024-06", "count": 60000},
+      {"month": "2024-07", "count": 68000},
+      {"month": "2024-08", "count": 75000},
+      {"month": "2024-09", "count": 82000},
+      {"month": "2024-10", "count": 86000},
+      {"month": "2024-11", "count": 89000},
+      {"month": "2024-12", "count": 92000}
+    ],
+    "슬로우에이징": [
+      {"month": "2024-01", "count": 5000},
+      {"month": "2024-02", "count": 8000},
+      {"month": "2024-03", "count": 12000},
+      {"month": "2024-04", "count": 16000},
+      {"month": "2024-05", "count": 20000},
+      {"month": "2024-06", "count": 24000},
+      {"month": "2024-07", "count": 27000},
+      {"month": "2024-08", "count": 30000},
+      {"month": "2024-09", "count": 33000},
+      {"month": "2024-10", "count": 35000},
+      {"month": "2024-11", "count": 37000},
+      {"month": "2024-12", "count": 38000}
+    ]
+  }
+}

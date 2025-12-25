@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeautyTrend AI - 기술 스택</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: #ffffff;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 950px;
+            background: #fff;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #8B5A8C;
+        }
+
+        .stack-layers {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .layer {
+            display: flex;
+            gap: 15px;
+            align-items: stretch;
+        }
+
+        .layer-label {
+            width: 140px;
+            padding: 20px 15px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            font-weight: 700;
+        }
+
+        .layer-label-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .layer-label-text {
+            font-size: 13px;
+            line-height: 1.3;
+        }
+
+        .layer:nth-child(1) .layer-label { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .layer:nth-child(2) .layer-label { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .layer:nth-child(3) .layer-label { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .layer:nth-child(4) .layer-label { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+
+        .layer-content {
+            flex: 1;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-content: center;
+        }
+
+        .tech-group {
+            background: #f8f9ff;
+            border-radius: 12px;
+            padding: 15px;
+            border: 2px solid #e8e8e8;
+            min-width: 180px;
+            flex: 1;
+        }
+
+        .layer:nth-child(1) .tech-group { border-color: rgba(102, 126, 234, 0.3); }
+        .layer:nth-child(2) .tech-group { border-color: rgba(240, 147, 251, 0.3); }
+        .layer:nth-child(3) .tech-group { border-color: rgba(79, 172, 254, 0.3); }
+        .layer:nth-child(4) .tech-group { border-color: rgba(17, 153, 142, 0.3); }
+
+        .tech-group-title {
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .layer:nth-child(1) .tech-group-title { color: #667eea; }
+        .layer:nth-child(2) .tech-group-title { color: #f5576c; }
+        .layer:nth-child(3) .tech-group-title { color: #4facfe; }
+        .layer:nth-child(4) .tech-group-title { color: #11998e; }
+
+        .tech-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tech-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 10px;
+            background: white;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
+            color: #333;
+            border: 1px solid #e8e8e8;
+        }
+
+        .tech-item img {
+            width: 14px;
+            height: 14px;
+        }
+
+        .tech-item-icon {
+            font-size: 12px;
+        }
+
+        /* Connection arrows */
+        .connection {
+            display: flex;
+            justify-content: center;
+            padding: 5px 0;
+        }
+
+        .arrow-down {
+            font-size: 24px;
+            color: #ccc;
+        }
+
+        /* Bottom summary */
+        .summary-bar {
+            margin-top: 25px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+            border-radius: 16px;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .summary-item {
+            text-align: center;
+        }
+
+        .summary-value {
+            font-size: 20px;
+            font-weight: 900;
+            margin-bottom: 3px;
+        }
+
+        .summary-label {
+            font-size: 11px;
+            opacity: 0.8;
+        }
+
+        .summary-divider {
+            width: 1px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="title">[기술 스택]</h2>
+
+        <div class="stack-layers">
+            <!-- Layer 1: Data Collection -->
+            <div class="layer">
+                <div class="layer-label">
+                    <div class="layer-label-icon">📥</div>
+                    <div class="layer-label-text">데이터<br>수집</div>
+                </div>
+                <div class="layer-content">
+                    <div class="tech-group">
+                        <div class="tech-group-title">📱 소셜 미디어 API</div>
+                        <div class="tech-items">
+                            <span class="tech-item"><span class="tech-item-icon">📺</span> TikTok API</span>
+                            <span class="tech-item"><span class="tech-item-icon">📷</span> Instagram API</span>
+                            <span class="tech-item"><span class="tech-item-icon">▶️</span> YouTube API</span>
+                        </div>
+                    </div>
+                    <div class="tech-group">
+                        <div class="tech-group-title">🕷️ 웹 크롤링</div>
+                        <div class="tech-items">
+                            <span class="tech-item"><span class="tech-item-icon">🎭</span> Playwright</span>
+                            <span class="tech-item"><span class="tech-item-icon">🕸️</span> Scrapy</span>
+                            <span class="tech-item"><span class="tech-item-icon">💡</span> Bright Data</span>
+                        </div>
+                    </div>
+                    <div class="tech-group">
+                        <div class="tech-group-title">💾 데이터 저장</div>
+                        <div class="tech-items">
+                            <span class="tech-item"><span class="tech-item-icon">🐘</span> PostgreSQL</span>
+                            <span class="tech-item"><span class="tech-item-icon">☁️</span> AWS S3</span>
+                            <span class="tech-item"><span class="tech-item-icon">⚡</span> Redis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="connection"><span class="arrow-down">▼</span></div>
+
+            <!-- Layer 2: AI Analysis -->
+            <div class="layer">
+                <div class="layer-label">
+                    <div class="layer-label-icon">🧠</div>
+                    <div class="layer-label-text">AI<br>분석</div>
+                </div>
+                <div class="layer-content">
+                    <div class="tech-group">
+                        <div class="tech-group-title">🔍 RAG 시스템</div>
+                        <div class="tech-items">
+                            <span class="tech-item"><span class="tech-item-icon">🔢</span> OpenAI Ada-002</span>
+                            <span class="tech-item"><span class="tech-item-icon">🎯</span> Chroma / Pinecone</span>
+                            <span class="tech-item"><span class="tech-item-icon">📊</span> Cohere Rerank</span>
+                        </div>
+                    </div>
+                    <div class="tech-group">
+                        <div class="tech-group-title">📈 시계열 예측</div>
+                        <div class="tech-items">
+                            <span class="tech-item"><span class="tech-item-icon">📉</span> ARIMA</span>
+                            <span class="tech-item"><span class="tech-item-icon">📅</span> Prophet</span>
+                            <span class="tech-item"><span class="tech-item-icon">🤖</span> Transformer</span>
+                        </div>
+                    </div>
+                    <div class="tech-group">
+                        <div class="tech-group-title">📝 NLP 파이프라인</div>
+                        <div class="tech-items">
+                            <span class="tech-item"><span class="tech-item-icon">🔤</span> Mecab-ko</span>
+                            <span class="tech-item"><span class="tech-item-icon">🏷️</span> KoBERT-NER</span>
+                            <span class="tech-item"><span class="tech-item-icon">😊</span> KoELECTRA</span>
+                            <span class="tech-item"><span class="tech-item-icon">📚</span> BERTopic</span>
+                        </div>
+                    </div>
+                    <div class="tech-group">
+                        <div class="tech-group-title">🎨 컴퓨터 비전</div>
+                        <div class="tech-items">
+                            <span class="tech-item"><span class="tech-item-icon">👁️</span> OpenCV</span>
+                            <span class="tech-item"><span class="tech-item-icon">🎯</span> K-Means</span>
+                            <span class="tech-item"><span class="tech-item-icon">🌈</span> Pantone API</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="connection"><span class="arrow-down">▼</span></div>
+
+            <!-- Layer 3: Multi-Agent -->
+            <div class="layer">
+                <div class="layer-label" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <div class="layer-label-icon">🔗</div>
+                    <div class="layer-label-text">Multi-<br>Agent</div>
+                </div>
+                <div class="layer-content">
+                    <div class="tech-group">
+                        <div class="tech-group-title">🔧 에이전트 프레임워크</div>
+                        <div class="tech-items">
+                            <span class="tech-item"><span class="tech-item-icon">🔗</span> LangGraph</span>
+                            <span class="tech-item"><span class="tech-item-icon">🤖</span> AutoGen</span>
+                            <span class="tech-item"><span class="tech-item-icon">🦜</span> LangChain</span>
+                        </div>
+                    </div>
+                    <div class="tech-group">
+                        <div class="tech-group-title">💬 LLM</div>
+                        <div class="tech-items">
+                            <span class="tech-item"><span class="tech-item-icon">🟣</span> Claude 3.5</span>
+                            <span class="tech-item"><span class="tech-item-icon">🟢</span> GPT-4o</span>
+                        </div>
+                    </div>
+                    <div class="tech-group">
+                        <div class="tech-group-title">🔌 프로토콜</div>
+                        <div class="tech-items">
+                            <span class="tech-item"><span class="tech-item-icon">📡</span> MCP</span>
+                            <span class="tech-item"><span class="tech-item-icon">🔄</span> REST API</span>
+                            <span class="tech-item"><span class="tech-item-icon">⚡</span> WebSocket</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="connection"><span class="arrow-down">▼</span></div>
+
+            <!-- Layer 4: Infrastructure -->
+            <div class="layer">
+                <div class="layer-label" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
+                    <div class="layer-label-icon">⚙️</div>
+                    <div class="layer-label-text">인프라</div>
+                </div>
+                <div class="layer-content">
+                    <div class="tech-group">
+                        <div class="tech-group-title">☁️ 클라우드</div>
+                        <div class="tech-items">
+                            <span class="tech-item"><span class="tech-item-icon">🟠</span> AWS EC2</span>
+                            <span class="tech-item"><span class="tech-item-icon">λ</span> AWS Lambda</span>
+                            <span class="tech-item"><span class="tech-item-icon">🐳</span> Docker</span>
+                        </div>
+                    </div>
+                    <div class="tech-group">
+                        <div class="tech-group-title">🗄️ 데이터베이스</div>
+                        <div class="tech-items">
+                            <span class="tech-item"><span class="tech-item-icon">📊</span> TimeScale</span>
+                            <span class="tech-item"><span class="tech-item-icon">🔢</span> pgvector</span>
+                            <span class="tech-item"><span class="tech-item-icon">❄️</span> Snowflake</span>
+                        </div>
+                    </div>
+                    <div class="tech-group">
+                        <div class="tech-group-title">📊 모니터링</div>
+                        <div class="tech-items">
+                            <span class="tech-item"><span class="tech-item-icon">📈</span> Grafana</span>
+                            <span class="tech-item"><span class="tech-item-icon">🔔</span> Prometheus</span>
+                            <span class="tech-item"><span class="tech-item-icon">📝</span> ELK Stack</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Bar -->
+        <div class="summary-bar">
+            <div class="summary-item">
+                <div class="summary-value">4개</div>
+                <div class="summary-label">레이어 구조</div>
+            </div>
+            <div class="summary-divider"></div>
+            <div class="summary-item">
+                <div class="summary-value">5개</div>
+                <div class="summary-label">AI 에이전트</div>
+            </div>
+            <div class="summary-divider"></div>
+            <div class="summary-item">
+                <div class="summary-value">3종</div>
+                <div class="summary-label">예측 모델 앙상블</div>
+            </div>
+            <div class="summary-divider"></div>
+            <div class="summary-item">
+                <div class="summary-value">RAG</div>
+                <div class="summary-label">검색 증강 생성</div>
+            </div>
+            <div class="summary-divider"></div>
+            <div class="summary-item">
+                <div class="summary-value">MCP</div>
+                <div class="summary-label">표준 프로토콜</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

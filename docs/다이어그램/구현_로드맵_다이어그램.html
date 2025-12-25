@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeautyTrend AI - 구현 로드맵</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: #ffffff;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 1000px;
+            background: #fff;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 40px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #8B5A8C;
+        }
+
+        .roadmap {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        /* Timeline line */
+        .timeline-line {
+            position: absolute;
+            top: 85px;
+            left: 60px;
+            right: 60px;
+            height: 6px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #11998e 75%, #38ef7d 100%);
+            border-radius: 3px;
+            z-index: 1;
+        }
+
+        .phases {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+
+        .phase {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 220px;
+        }
+
+        .phase-dot {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 0 0 4px;
+            margin-bottom: 20px;
+        }
+
+        .phase:nth-child(1) .phase-dot {
+            background: #667eea;
+            box-shadow: 0 0 0 4px #667eea;
+        }
+        .phase:nth-child(2) .phase-dot {
+            background: #764ba2;
+            box-shadow: 0 0 0 4px #764ba2;
+        }
+        .phase:nth-child(3) .phase-dot {
+            background: #f093fb;
+            box-shadow: 0 0 0 4px #f093fb;
+        }
+        .phase:nth-child(4) .phase-dot {
+            background: #11998e;
+            box-shadow: 0 0 0 4px #11998e;
+        }
+
+        .phase-card {
+            background: #f8f9ff;
+            border-radius: 16px;
+            padding: 25px 20px;
+            text-align: center;
+            width: 100%;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .phase:nth-child(1) .phase-card { border-color: #667eea; }
+        .phase:nth-child(2) .phase-card { border-color: #764ba2; }
+        .phase:nth-child(3) .phase-card { border-color: #f093fb; }
+        .phase:nth-child(4) .phase-card { border-color: #11998e; }
+
+        .phase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .phase-label {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .phase:nth-child(1) .phase-label { color: #667eea; }
+        .phase:nth-child(2) .phase-label { color: #764ba2; }
+        .phase:nth-child(3) .phase-label { color: #f093fb; }
+        .phase:nth-child(4) .phase-label { color: #11998e; }
+
+        .phase-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 5px;
+        }
+
+        .phase-period {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .phase-items {
+            text-align: left;
+            font-size: 12px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .phase-items li {
+            list-style: none;
+            padding-left: 18px;
+            position: relative;
+            margin-bottom: 4px;
+        }
+
+        .phase-items li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .phase:nth-child(1) .phase-items li::before { color: #667eea; }
+        .phase:nth-child(2) .phase-items li::before { color: #764ba2; }
+        .phase:nth-child(3) .phase-items li::before { color: #f093fb; }
+        .phase:nth-child(4) .phase-items li::before { color: #11998e; }
+
+        /* Bottom summary */
+        .summary {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            color: white;
+        }
+
+        .summary-icon {
+            font-size: 28px;
+        }
+
+        .summary-text {
+            text-align: left;
+        }
+
+        .summary-value {
+            font-size: 22px;
+            font-weight: 900;
+        }
+
+        .summary-label {
+            font-size: 11px;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="title">[구현 로드맵]</h2>
+
+        <div class="roadmap">
+            <div class="timeline-line"></div>
+
+            <div class="phases">
+                <!-- Phase 1 -->
+                <div class="phase">
+                    <div class="phase-dot"></div>
+                    <div class="phase-card">
+                        <div class="phase-label">Phase 1</div>
+                        <h3 class="phase-title">MVP</h3>
+                        <div class="phase-period">1~3개월</div>
+                        <ul class="phase-items">
+                            <li>TikTok 단일 소스 수집</li>
+                            <li>ARIMA 기본 예측 모델</li>
+                            <li>해시태그 트렌드 분석</li>
+                            <li>주간 PDF 리포트 생성</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="phase">
+                    <div class="phase-dot"></div>
+                    <div class="phase-card">
+                        <div class="phase-label">Phase 2</div>
+                        <h3 class="phase-title">멀티소스 확대</h3>
+                        <div class="phase-period">3~6개월</div>
+                        <ul class="phase-items">
+                            <li>Instagram, YouTube 추가</li>
+                            <li>Color Analysis Agent</li>
+                            <li>경쟁사 모니터링 구현</li>
+                            <li>RAG + Vector DB 구축</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="phase">
+                    <div class="phase-dot"></div>
+                    <div class="phase-card">
+                        <div class="phase-label">Phase 3</div>
+                        <h3 class="phase-title">고도화</h3>
+                        <div class="phase-period">6~12개월</div>
+                        <ul class="phase-items">
+                            <li>앙상블 예측 모델</li>
+                            <li>Self-Reflecting 구현</li>
+                            <li>MCI 시스템 연동</li>
+                            <li>실시간 대시보드 UI</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 4 -->
+                <div class="phase">
+                    <div class="phase-dot"></div>
+                    <div class="phase-card">
+                        <div class="phase-label">Phase 4</div>
+                        <h3 class="phase-title">확장</h3>
+                        <div class="phase-period">12개월+</div>
+                        <ul class="phase-items">
+                            <li>글로벌 시장 확대</li>
+                            <li>브랜드별 커스텀 리포트</li>
+                            <li>B2B SaaS 모델</li>
+                            <li>특허 출원</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="summary">
+            <div class="summary-item">
+                <span class="summary-icon">🎯</span>
+                <div class="summary-text">
+                    <div class="summary-value">3개월</div>
+                    <div class="summary-label">MVP 출시</div>
+                </div>
+            </div>
+            <div class="summary-item">
+                <span class="summary-icon">💰</span>
+                <div class="summary-text">
+                    <div class="summary-value">1년</div>
+                    <div class="summary-label">투자 회수</div>
+                </div>
+            </div>
+            <div class="summary-item">
+                <span class="summary-icon">📈</span>
+                <div class="summary-text">
+                    <div class="summary-value">30억+</div>
+                    <div class="summary-label">2년차 순이익 기여</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

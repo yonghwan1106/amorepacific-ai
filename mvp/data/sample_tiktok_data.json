@@ -1,0 +1,151 @@
+{
+  "collected_at": "2024-12-25T10:00:00",
+  "platform": "TikTok",
+  "category": "Beauty",
+  "posts": [
+    {
+      "id": "1",
+      "hashtags": ["글래스스킨", "스킨케어", "피부관리", "K뷰티"],
+      "views": 2500000,
+      "likes": 450000,
+      "comments": 12000,
+      "shares": 8500,
+      "caption": "글래스스킨 만드는 법! 세라마이드 세럼으로 촉촉하게 ✨",
+      "ingredients_mentioned": ["세라마이드", "히알루론산"],
+      "created_at": "2024-12-20",
+      "sentiment": 0.85
+    },
+    {
+      "id": "2",
+      "hashtags": ["스킨미니멀리즘", "민감성피부", "순한화장품"],
+      "views": 1800000,
+      "likes": 320000,
+      "comments": 8900,
+      "shares": 5200,
+      "caption": "민감성 피부를 위한 3단계 스킨케어 루틴",
+      "ingredients_mentioned": ["센텔라", "판테놀"],
+      "created_at": "2024-12-19",
+      "sentiment": 0.78
+    },
+    {
+      "id": "3",
+      "hashtags": ["레티놀", "안티에이징", "주름개선"],
+      "views": 3200000,
+      "likes": 580000,
+      "comments": 15000,
+      "shares": 12000,
+      "caption": "20대부터 레티놀 시작해야 하는 이유",
+      "ingredients_mentioned": ["레티놀", "나이아신아마이드"],
+      "created_at": "2024-12-18",
+      "sentiment": 0.72
+    },
+    {
+      "id": "4",
+      "hashtags": ["비건뷰티", "클린뷰티", "친환경화장품"],
+      "views": 980000,
+      "likes": 180000,
+      "comments": 5600,
+      "shares": 3400,
+      "caption": "동물실험 NO! 비건 뷰티 브랜드 추천",
+      "ingredients_mentioned": ["스쿠알란", "호호바오일"],
+      "created_at": "2024-12-17",
+      "sentiment": 0.91
+    },
+    {
+      "id": "5",
+      "hashtags": ["펩타이드", "탄력케어", "슬로우에이징"],
+      "views": 1500000,
+      "likes": 290000,
+      "comments": 7800,
+      "shares": 4900,
+      "caption": "펩타이드 vs 레티놀, 뭐가 더 좋을까?",
+      "ingredients_mentioned": ["펩타이드", "콜라겐"],
+      "created_at": "2024-12-16",
+      "sentiment": 0.82
+    },
+    {
+      "id": "6",
+      "hashtags": ["바쿠치올", "레티놀대안", "민감성피부"],
+      "views": 2100000,
+      "likes": 410000,
+      "comments": 11000,
+      "shares": 7200,
+      "caption": "레티놀 자극 없이 안티에이징? 바쿠치올 알아보자",
+      "ingredients_mentioned": ["바쿠치올", "비타민E"],
+      "created_at": "2024-12-15",
+      "sentiment": 0.88
+    },
+    {
+      "id": "7",
+      "hashtags": ["선크림", "자외선차단", "톤업선크림"],
+      "views": 4500000,
+      "likes": 820000,
+      "comments": 22000,
+      "shares": 18000,
+      "caption": "겨울에도 선크림 필수! 촉촉한 선크림 추천",
+      "ingredients_mentioned": ["나이아신아마이드", "히알루론산"],
+      "created_at": "2024-12-14",
+      "sentiment": 0.79
+    },
+    {
+      "id": "8",
+      "hashtags": ["세라마이드", "피부장벽", "건성피부"],
+      "views": 1900000,
+      "likes": 350000,
+      "comments": 9200,
+      "shares": 5800,
+      "caption": "피부장벽 회복에는 세라마이드가 답!",
+      "ingredients_mentioned": ["세라마이드", "콜레스테롤", "지방산"],
+      "created_at": "2024-12-13",
+      "sentiment": 0.84
+    },
+    {
+      "id": "9",
+      "hashtags": ["비타민C", "미백", "톤업"],
+      "views": 2800000,
+      "likes": 520000,
+      "comments": 14000,
+      "shares": 9500,
+      "caption": "비타민C 세럼 제대로 사용하는 방법",
+      "ingredients_mentioned": ["비타민C", "페룰산", "비타민E"],
+      "created_at": "2024-12-12",
+      "sentiment": 0.81
+    },
+    {
+      "id": "10",
+      "hashtags": ["AHA", "BHA", "각질케어", "모공관리"],
+      "views": 1650000,
+      "likes": 310000,
+      "comments": 8500,
+      "shares": 5100,
+      "caption": "AHA vs BHA, 내 피부에 맞는 산 찾기",
+      "ingredients_mentioned": ["글리콜산", "살리실산"],
+      "created_at": "2024-12-11",
+      "sentiment": 0.76
+    }
+  ],
+  "hashtag_trends": [
+    {"tag": "글래스스킨", "count": 158000, "growth": 245},
+    {"tag": "스킨미니멀리즘", "count": 92000, "growth": 189},
+    {"tag": "세라마이드", "count": 87000, "growth": 156},
+    {"tag": "바쿠치올", "count": 65000, "growth": 312},
+    {"tag": "펩타이드", "count": 54000, "growth": 178},
+    {"tag": "비건뷰티", "count": 48000, "growth": 134},
+    {"tag": "레티놀", "count": 125000, "growth": 89},
+    {"tag": "클린뷰티", "count": 41000, "growth": 167},
+    {"tag": "슬로우에이징", "count": 38000, "growth": 223},
+    {"tag": "피부장벽", "count": 72000, "growth": 145}
+  ],
+  "ingredient_mentions": [
+    {"name": "세라마이드", "count": 45000, "sentiment_avg": 0.86},
+    {"name": "나이아신아마이드", "count": 62000, "sentiment_avg": 0.82},
+    {"name": "히알루론산", "count": 58000, "sentiment_avg": 0.84},
+    {"name": "레티놀", "count": 51000, "sentiment_avg": 0.71},
+    {"name": "펩타이드", "count": 38000, "sentiment_avg": 0.88},
+    {"name": "비타민C", "count": 55000, "sentiment_avg": 0.79},
+    {"name": "바쿠치올", "count": 28000, "sentiment_avg": 0.91},
+    {"name": "센텔라", "count": 34000, "sentiment_avg": 0.85},
+    {"name": "판테놀", "count": 29000, "sentiment_avg": 0.83},
+    {"name": "스쿠알란", "count": 22000, "sentiment_avg": 0.87}
+  ]
+}
