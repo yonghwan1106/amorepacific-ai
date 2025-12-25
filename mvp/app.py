@@ -149,17 +149,22 @@ st.markdown("""
 # ============================================
 @st.cache_data
 def load_data():
-    import os
-    base_path = os.path.dirname(__file__)
-    with open(os.path.join(base_path, 'data/sample_tiktok_data.json'), 'r', encoding='utf-8') as f:
+    from pathlib import Path
+    # Streamlit Cloud 호환 경로
+    base_path = Path(__file__).parent
+    tiktok_path = base_path / 'data' / 'sample_tiktok_data.json'
+    historical_path = base_path / 'data' / 'historical_trends.json'
+
+    with open(tiktok_path, 'r', encoding='utf-8') as f:
         tiktok_data = json.load(f)
-    with open(os.path.join(base_path, 'data/historical_trends.json'), 'r', encoding='utf-8') as f:
+    with open(historical_path, 'r', encoding='utf-8') as f:
         historical_data = json.load(f)
     return tiktok_data, historical_data
 
 try:
     tiktok_data, historical_data = load_data()
-except:
+except Exception as e:
+    st.error(f"데이터 로드 실패: {e}")
     tiktok_data = None
     historical_data = None
 
