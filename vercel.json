@@ -1,7 +1,12 @@
 {
-  "buildCommand": "",
-  "outputDirectory": "docs",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/$1" }
+  "version": 2,
+  "builds": [
+    {
+      "src": "docs/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/docs/$1" }
   ]
 }
