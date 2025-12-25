@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeautyTrend AI - Amorepacific AI Innovation Challenge 2026</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .card-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            margin-top: 15px;
+        }
+        .mvp-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            grid-column: 1 / -1;
+        }
+        .mvp-card h3, .mvp-card p {
+            color: white;
+        }
+        .mvp-card .card-tag {
+            background: rgba(255,255,255,0.2);
+        }
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💄 BeautyTrend AI</h1>
+            <p>글로벌 뷰티 트렌드 예측 AI 에이전트</p>
+            <span class="badge">AGENT TRACK | AI INNOVATION CHALLENGE 2026</span>
+        </div>
+
+        <div class="cards">
+            <a href="https://amorepacific-ai.streamlit.app" target="_blank" class="card mvp-card">
+                <div class="card-icon">🚀</div>
+                <h3>MVP 라이브 데모</h3>
+                <p>Streamlit Cloud에서 실행 중인 BeautyTrend AI MVP를 직접 체험해보세요. 트렌드 예측, AI 챗봇, PDF 리포트 생성 기능을 확인할 수 있습니다.</p>
+                <span class="card-tag">LIVE DEMO</span>
+            </a>
+
+            <a href="BeautyTrend_AI_프레젠테이션.html" class="card">
+                <div class="card-icon">📊</div>
+                <h3>프레젠테이션</h3>
+                <p>BeautyTrend AI의 핵심 기능과 기술 아키텍처를 담은 16슬라이드 프레젠테이션</p>
+                <span class="card-tag">16 SLIDES</span>
+            </a>
+
+            <a href="다이어그램/Multi-Agent_아키텍처_다이어그램.html" class="card">
+                <div class="card-icon">🏗️</div>
+                <h3>시스템 아키텍처</h3>
+                <p>Multi-Agent 구조와 데이터 흐름을 시각화한 아키텍처 다이어그램</p>
+                <span class="card-tag">ARCHITECTURE</span>
+            </a>
+
+            <a href="다이어그램/5대_핵심기능_다이어그램.html" class="card">
+                <div class="card-icon">⭐</div>
+                <h3>5대 핵심 기능</h3>
+                <p>트렌드 수집, 예측, 컬러 분석, 경쟁사 모니터링, 리포트 생성</p>
+                <span class="card-tag">FEATURES</span>
+            </a>
+
+            <a href="다이어그램/기술스택_다이어그램.html" class="card">
+                <div class="card-icon">🛠️</div>
+                <h3>기술 스택</h3>
+                <p>Prophet, RAG, LangGraph, Vector DB 등 AI/ML 기술 스택</p>
+                <span class="card-tag">TECH STACK</span>
+            </a>
+
+            <a href="다이어그램/구현_로드맵_다이어그램.html" class="card">
+                <div class="card-icon">🗓️</div>
+                <h3>구현 로드맵</h3>
+                <p>MVP부터 상용화까지 4단계 구현 계획</p>
+                <span class="card-tag">ROADMAP</span>
+            </a>
+
+            <a href="다이어그램/기대효과_다이어그램.html" class="card">
+                <div class="card-icon">📈</div>
+                <h3>기대 효과</h3>
+                <p>신제품 개발 50% 단축, 예측 정확도 85%+ 등 ROI 분석</p>
+                <span class="card-tag">ROI</span>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 BeautyTrend AI | Amorepacific AI Innovation Challenge</p>
+        </div>
+    </div>
+</body>
+</html>

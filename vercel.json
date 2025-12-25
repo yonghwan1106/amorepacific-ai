@@ -1,0 +1,7 @@
+{
+  "buildCommand": "",
+  "outputDirectory": "docs",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/$1" }
+  ]
+}
