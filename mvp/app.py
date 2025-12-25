@@ -149,9 +149,11 @@ st.markdown("""
 # ============================================
 @st.cache_data
 def load_data():
-    with open('data/sample_tiktok_data.json', 'r', encoding='utf-8') as f:
+    import os
+    base_path = os.path.dirname(__file__)
+    with open(os.path.join(base_path, 'data/sample_tiktok_data.json'), 'r', encoding='utf-8') as f:
         tiktok_data = json.load(f)
-    with open('data/historical_trends.json', 'r', encoding='utf-8') as f:
+    with open(os.path.join(base_path, 'data/historical_trends.json'), 'r', encoding='utf-8') as f:
         historical_data = json.load(f)
     return tiktok_data, historical_data
 
@@ -428,12 +430,8 @@ def generate_pdf_report(tiktok_data, historical_data, prediction_results):
     pdf = FPDF()
     pdf.add_page()
 
-    # 폰트 설정
-    try:
-        pdf.add_font('Malgun', '', 'C:/Windows/Fonts/malgun.ttf', uni=True)
-        font = 'Malgun'
-    except:
-        font = 'Helvetica'
+    # 폰트 설정 (Streamlit Cloud는 Linux이므로 기본 폰트 사용)
+    font = 'Helvetica'
 
     # 제목
     pdf.set_font(font, '', 24)
