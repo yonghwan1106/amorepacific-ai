@@ -18,8 +18,8 @@ venv/
 .DS_Store
 Thumbs.db
 
-# Streamlit
-.streamlit/
+# Streamlit secrets (not config)
+.streamlit/secrets.toml
 
 # Temp
 *.log
