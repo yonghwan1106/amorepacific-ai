@@ -282,31 +282,31 @@ def load_data():
 
     historical_data = {
         "ingredient_trends": {
-            "세라마이드": [{"month": f"2024-{i:02d}", "mentions": int(12000 + i*3000 + random.randint(-1000, 1000))} for i in range(1, 13)],
-            "바쿠치올": [{"month": f"2024-{i:02d}", "mentions": int(2000 + i*2500 + random.randint(-500, 500))} for i in range(1, 13)],
-            "펩타이드": [{"month": f"2024-{i:02d}", "mentions": int(8000 + i*2500 + random.randint(-800, 800))} for i in range(1, 13)],
-            "나이아신아마이드": [{"month": f"2024-{i:02d}", "mentions": int(15000 + i*2000 + random.randint(-1000, 1000))} for i in range(1, 13)],
-            "레티놀": [{"month": f"2024-{i:02d}", "mentions": int(20000 + i*1500 + random.randint(-1200, 1200))} for i in range(1, 13)]
+            "세라마이드": [{"month": f"2025-{i:02d}", "mentions": int(12000 + i*3000 + random.randint(-1000, 1000))} for i in range(1, 13)],
+            "바쿠치올": [{"month": f"2025-{i:02d}", "mentions": int(2000 + i*2500 + random.randint(-500, 500))} for i in range(1, 13)],
+            "펩타이드": [{"month": f"2025-{i:02d}", "mentions": int(8000 + i*2500 + random.randint(-800, 800))} for i in range(1, 13)],
+            "나이아신아마이드": [{"month": f"2025-{i:02d}", "mentions": int(15000 + i*2000 + random.randint(-1000, 1000))} for i in range(1, 13)],
+            "레티놀": [{"month": f"2025-{i:02d}", "mentions": int(20000 + i*1500 + random.randint(-1200, 1200))} for i in range(1, 13)]
         }
     }
 
     color_trends = [
-        {"color": "Soft Pink", "hex": "#FFB6C1", "growth": 45, "season": "S/S 2025"},
-        {"color": "Terracotta", "hex": "#E2725B", "growth": 38, "season": "F/W 2025"},
-        {"color": "Mauve", "hex": "#E0B0FF", "growth": 52, "season": "S/S 2025"},
-        {"color": "Brick Red", "hex": "#CB4154", "growth": 28, "season": "F/W 2025"},
+        {"color": "Soft Pink", "hex": "#FFB6C1", "growth": 45, "season": "S/S 2026"},
+        {"color": "Terracotta", "hex": "#E2725B", "growth": 38, "season": "F/W 2026"},
+        {"color": "Mauve", "hex": "#E0B0FF", "growth": 52, "season": "S/S 2026"},
+        {"color": "Brick Red", "hex": "#CB4154", "growth": 28, "season": "F/W 2026"},
         {"color": "Nude Beige", "hex": "#F5DEB3", "growth": 61, "season": "All Season"},
-        {"color": "Berry", "hex": "#8E4585", "growth": 33, "season": "F/W 2025"},
-        {"color": "Coral", "hex": "#FF7F50", "growth": 47, "season": "S/S 2025"},
+        {"color": "Berry", "hex": "#8E4585", "growth": 33, "season": "F/W 2026"},
+        {"color": "Coral", "hex": "#FF7F50", "growth": 47, "season": "S/S 2026"},
         {"color": "Dusty Rose", "hex": "#DCAE96", "growth": 55, "season": "All Season"}
     ]
 
     competitor_data = [
-        {"brand": "에스티로더", "product": "Advanced Night Repair 2.0", "launch": "2025-02", "category": "세럼", "key_ingredient": "크로노럭신"},
-        {"brand": "로레알", "product": "Revitalift Laser X4", "launch": "2025-03", "category": "크림", "key_ingredient": "레티놀"},
-        {"brand": "시세이도", "product": "Ultimune Power Infusing 4.0", "launch": "2025-01", "category": "세럼", "key_ingredient": "ImuGeneration"},
-        {"brand": "SK-II", "product": "GenOptics Ultra Aura", "launch": "2025-04", "category": "에센스", "key_ingredient": "피테라"},
-        {"brand": "랑콤", "product": "Absolue Rich Cream 2025", "launch": "2025-02", "category": "크림", "key_ingredient": "그랑로즈"}
+        {"brand": "에스티로더", "product": "Advanced Night Repair 3.0", "launch": "2026-02", "category": "세럼", "key_ingredient": "크로노럭신 NEO"},
+        {"brand": "로레알", "product": "Revitalift Laser X5", "launch": "2026-03", "category": "크림", "key_ingredient": "프로-레티놀"},
+        {"brand": "시세이도", "product": "Ultimune Power Infusing 5.0", "launch": "2026-01", "category": "세럼", "key_ingredient": "ImuGeneration RED"},
+        {"brand": "SK-II", "product": "GenOptics Aura Essence 2026", "launch": "2026-04", "category": "에센스", "key_ingredient": "피테라 크리스탈"},
+        {"brand": "랑콤", "product": "Absolue Rich Cream 2026", "launch": "2026-02", "category": "크림", "key_ingredient": "그랑로즈 엑스트랙트"}
     ]
 
     return tiktok_data, historical_data, color_trends, competitor_data
@@ -554,7 +554,7 @@ with tab2:
 # TAB 3: 컬러 트렌드
 # ============================================================
 with tab3:
-    st.markdown('<div class="section-header">🎨 2025 컬러 트렌드 분석</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-header">🎨 2026 컬러 트렌드 분석</div>', unsafe_allow_html=True)
 
     col1, col2 = st.columns([2, 1])
 
@@ -626,7 +626,7 @@ with tab4:
         st.markdown("""
         <div class="insight-box">
         <strong>🔍 경쟁 분석 인사이트</strong><br><br>
-        <span style="color: rgba(255,255,255,0.8);">에스티로더와 시세이도가 2025년 초 프리미엄 세럼 라인 강화 예정.
+        <span style="color: rgba(255,255,255,0.8);">에스티로더와 시세이도가 2026년 초 프리미엄 세럼 라인 강화 예정.
         레티놀 대체 성분과 피부 장벽 강화 성분이 주요 트렌드로 부상.</span>
         </div>
         """, unsafe_allow_html=True)
@@ -635,7 +635,7 @@ with tab4:
         <div class="insight-box">
         <strong>🎯 대응 전략 제안</strong><br><br>
         <span style="color: rgba(255,255,255,0.8);">바쿠치올 기반 안티에이징 세럼으로 시장 선점 기회.
-        Q1 2025 출시 타겟으로 개발 가속화를 권장합니다.</span>
+        Q1 2026 출시 타겟으로 개발 가속화를 권장합니다.</span>
         </div>
         """, unsafe_allow_html=True)
 
@@ -736,7 +736,7 @@ with tab6:
 
 **💡 전략 추천**: 레티놀 대체 안티에이징 라인 출시 적극 권장
         """,
-        "트렌드": """### 📈 2025-2026 뷰티 메가 트렌드
+        "트렌드": """### 📈 2026 뷰티 메가 트렌드
 
 | 트렌드 | 성장률 | 설명 |
 |--------|--------|------|
@@ -745,7 +745,7 @@ with tab6:
 | 글래스스킨 | +245% | 건강한 피부 광채 추구 |
 | 클린뷰티 2.0 | +134% | 성분 투명성 + 지속가능성 |
 
-**🎯 전략 제안**: 바쿠치올 기반 슬로우에이징 라인 Q1 2025 출시 권장
+**🎯 전략 제안**: 바쿠치올 기반 슬로우에이징 라인 Q1 2026 출시 권장
         """,
         "펩타이드": """### 🔬 펩타이드 (Peptide) 분석
 
@@ -763,24 +763,24 @@ with tab6:
         """,
         "경쟁사": """### 🏢 경쟁사 동향 분석
 
-| 브랜드 | 신제품 | 출시 | 핵심 성분 |
-|--------|--------|------|----------|
-| 에스티로더 | ANR 2.0 | 2025.02 | 크로노럭신 |
-| 시세이도 | Ultimune 4.0 | 2025.01 | ImuGeneration |
-| 로레알 | Revitalift X4 | 2025.03 | 레티놀 |
+| 브랜드 | 신제품 | 출시 예정 | 핵심 성분 |
+|--------|--------|----------|----------|
+| 에스티로더 | ANR 3.0 | 2026.02 | 크로노럭신 NEO |
+| 시세이도 | Ultimune 5.0 | 2026.01 | ImuGeneration RED |
+| 로레알 | Revitalift X5 | 2026.03 | 프로-레티놀 |
 
 **🎯 시사점**: 바쿠치올 기반 제품으로 레티놀 대안 시장 선점 기회
         """,
-        "컬러": """### 🎨 2025 컬러 트렌드
+        "컬러": """### 🎨 2026 컬러 트렌드
 
 **TOP 3 상승 컬러**
 1. 🩷 Nude Beige (+61%) - 올시즌 스테디셀러
 2. 🌸 Dusty Rose (+55%) - 자연스러운 뉴트럴
-3. 💜 Mauve (+52%) - S/S 2025 키 컬러
+3. 💜 Mauve (+52%) - S/S 2026 키 컬러
 
 **시즌별 추천**
-- S/S 2025: Soft Pink, Coral, Mauve
-- F/W 2025: Terracotta, Brick Red, Berry
+- S/S 2026: Soft Pink, Coral, Mauve
+- F/W 2026: Terracotta, Brick Red, Berry
 
 **💄 립 제품**: Dusty Rose 계열 MLBB 라인 추천
         """
@@ -814,7 +814,7 @@ with tab6:
 
 다음 키워드로 질문해주세요:
 - **바쿠치올**: 성분 트렌드 분석
-- **트렌드**: 2025-2026 메가 트렌드
+- **트렌드**: 2026 메가 트렌드
 - **펩타이드**: 안티에이징 성분
 - **경쟁사**: 신제품 동향
 - **컬러**: 컬러 트렌드
