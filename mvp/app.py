@@ -14,12 +14,7 @@ import random
 import io
 import base64
 
-# PDF 생성
-try:
-    from fpdf import FPDF
-    PDF_AVAILABLE = True
-except ImportError:
-    PDF_AVAILABLE = False
+# v3.5 - PDF 기능 제거 (Streamlit Cloud 한글 폰트 미지원)
 
 # 페이지 설정
 st.set_page_config(
