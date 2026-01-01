@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-BeautyTrend AI - MVP v3.5 (Enhanced UI)
+BeautyTrend AI - MVP v4.0 (Multi-Agent System)
 아모레퍼시픽 2026 AI INNOVATION CHALLENGE
 """
 
@@ -13,8 +13,30 @@ from datetime import datetime, timedelta
 import random
 import io
 import base64
+import asyncio
+import nest_asyncio
+nest_asyncio.apply()
 
-# v3.5 - PDF 기능 제거 (Streamlit Cloud 한글 폰트 미지원)
+# Multi-Agent System 임포트
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+try:
+    from agents import (
+        OrchestratorAgent,
+        DataFetchAgent,
+        TrendModelAgent,
+        ColorAnalysisAgent,
+        CompetitorAgent,
+        AgentStatus
+    )
+    AGENTS_AVAILABLE = True
+except ImportError as e:
+    AGENTS_AVAILABLE = False
+    print(f"Warning: Could not import agents: {e}")
+
+# v4.0 - Multi-Agent 시스템 통합
 
 # 페이지 설정
 st.set_page_config(
@@ -23,6 +45,63 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+# ============================================================
+# Multi-Agent 시스템 초기화
+# ============================================================
+@st.cache_resource
+def initialize_agents():
+    """에이전트 시스템 초기화 (캐시됨)"""
+    if not AGENTS_AVAILABLE:
+        print("Warning: Agents not available")
+        return None
+
+    try:
+        # API 키 가져오기 (Streamlit secrets 또는 환경변수)
+        api_key = None
+        try:
+            api_key = st.secrets.get("ANTHROPIC_API_KEY", None)
+        except Exception:
+            api_key = os.getenv("ANTHROPIC_API_KEY")
+
+        # 오케스트레이터 생성
+        orchestrator = OrchestratorAgent(api_key=api_key)
+
+        # 서브 에이전트 등록
+        orchestrator.register_agent("data_fetch", DataFetchAgent())
+        orchestrator.register_agent("trend_model", TrendModelAgent())
+        orchestrator.register_agent("color_analysis", ColorAnalysisAgent())
+        orchestrator.register_agent("competitor", CompetitorAgent())
+
+        print(f"Agents initialized successfully. API key: {'set' if api_key else 'not set'}")
+        return orchestrator
+    except Exception as e:
+        print(f"Error initializing agents: {e}")
+        return None
+
+# 에이전트 초기화 (캐시 리소스 사용)
+_orchestrator = initialize_agents()
+
+# 세션 상태 초기화
+if 'chat_messages' not in st.session_state:
+    st.session_state.chat_messages = []
+
+if 'agent_logs' not in st.session_state:
+    st.session_state.agent_logs = []
+
+def get_orchestrator():
+    """오케스트레이터 가져오기"""
+    return _orchestrator
+
+def run_agent_async(agent, task, context=None):
+    """에이전트 비동기 실행 래퍼"""
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    try:
+        result = loop.run_until_complete(agent.execute(task, context))
+        return result
+    finally:
+        loop.close()
 
 # ============================================================
 # 향상된 CSS 스타일
@@ -348,9 +427,27 @@ with st.sidebar:
     st.markdown("---")
 
     st.markdown("##### 🤖 AI 에이전트")
-    agents = ["Orchestrator", "Data Fetch", "Trend Model", "Color Analysis", "Competitor"]
-    for agent in agents:
-        st.markdown(f'<span class="agent-badge">{agent}</span>', unsafe_allow_html=True)
+
+    # 동적 에이전트 상태 표시
+    orchestrator = get_orchestrator()
+    if AGENTS_AVAILABLE and orchestrator:
+        agent_info = [
+            ("Orchestrator", orchestrator),
+            ("Data Fetch", orchestrator.sub_agents.get("data_fetch")),
+            ("Trend Model", orchestrator.sub_agents.get("trend_model")),
+            ("Color Analysis", orchestrator.sub_agents.get("color_analysis")),
+            ("Competitor", orchestrator.sub_agents.get("competitor"))
+        ]
+        for name, agent in agent_info:
+            if agent:
+                emoji = agent.get_status_emoji()
+                st.markdown(f'<span class="agent-badge">{emoji} {name}</span>', unsafe_allow_html=True)
+            else:
+                st.markdown(f'<span class="agent-badge">⚪ {name}</span>', unsafe_allow_html=True)
+    else:
+        agents = ["Orchestrator", "Data Fetch", "Trend Model", "Color Analysis", "Competitor"]
+        for agent in agents:
+            st.markdown(f'<span class="agent-badge">⚪ {agent}</span>', unsafe_allow_html=True)
 
     st.markdown("---")
 
@@ -712,120 +809,133 @@ with tab5:
             """, unsafe_allow_html=True)
 
 # ============================================================
-# TAB 6: AI 챗봇
+# TAB 6: AI 챗봇 (Multi-Agent 기반)
 # ============================================================
 with tab6:
     st.markdown('<div class="section-header">💬 AI 트렌드 어시스턴트</div>', unsafe_allow_html=True)
 
-    chatbot_responses = {
-        "바쿠치올": """### 🧪 바쿠치올 (Bakuchiol) 트렌드 분석
+    # 에이전트 상태 표시
+    tab6_orchestrator = get_orchestrator()
+    if AGENTS_AVAILABLE and tab6_orchestrator:
+        has_api = tab6_orchestrator.client is not None
+        if has_api:
+            st.success("🤖 Claude API 연결됨 - 실시간 AI 분석 가능")
+        else:
+            st.info("🤖 규칙 기반 모드 - API 키 설정 시 고급 기능 활성화")
+    else:
+        st.warning("⚠️ 에이전트 시스템 로딩 중...")
 
-바쿠치올은 현재 뷰티 업계에서 가장 주목받는 성분입니다.
-
-**📊 핵심 데이터**
-| 지표 | 수치 |
-|------|------|
-| 월간 언급량 | 28,000+ |
-| 성장률 (YoY) | +312% |
-| 감성 점수 | 0.91 |
-
-**🎯 주요 타겟층**
-- 민감성 피부 25-40세 여성
-- 레티놀 부작용 경험자
-- 클린뷰티 선호층
-
-**💡 전략 추천**: 레티놀 대체 안티에이징 라인 출시 적극 권장
-        """,
-        "트렌드": """### 📈 2026 뷰티 메가 트렌드
-
-| 트렌드 | 성장률 | 설명 |
-|--------|--------|------|
-| 슬로우에이징 | +267% | 자연스러운 노화 관리 |
-| 스킨미니멀리즘 | +189% | 멀티 기능 제품 선호 |
-| 글래스스킨 | +245% | 건강한 피부 광채 추구 |
-| 클린뷰티 2.0 | +134% | 성분 투명성 + 지속가능성 |
-
-**🎯 전략 제안**: 바쿠치올 기반 슬로우에이징 라인 Q1 2026 출시 권장
-        """,
-        "펩타이드": """### 🔬 펩타이드 (Peptide) 분석
-
-콜라겐 생성 촉진 효과로 안티에이징 시장의 핵심 성분입니다.
-
-**📊 시장 데이터**
-- 언급량: 38,000+ (월간)
-- 성장률: +178% (YoY)
-- 감성 점수: 0.88
-
-**💊 주목 펩타이드**
-- 아르지렐린: 보톡스 대안
-- 마트릭실: 콜라겐 합성 촉진
-- 코퍼 펩타이드: 피부 재생
-        """,
-        "경쟁사": """### 🏢 경쟁사 동향 분석
-
-| 브랜드 | 신제품 | 출시 예정 | 핵심 성분 |
-|--------|--------|----------|----------|
-| 에스티로더 | ANR 3.0 | 2026.02 | 크로노럭신 NEO |
-| 시세이도 | Ultimune 5.0 | 2026.01 | ImuGeneration RED |
-| 로레알 | Revitalift X5 | 2026.03 | 프로-레티놀 |
-
-**🎯 시사점**: 바쿠치올 기반 제품으로 레티놀 대안 시장 선점 기회
-        """,
-        "컬러": """### 🎨 2026 컬러 트렌드
-
-**TOP 3 상승 컬러**
-1. 🩷 Nude Beige (+61%) - 올시즌 스테디셀러
-2. 🌸 Dusty Rose (+55%) - 자연스러운 뉴트럴
-3. 💜 Mauve (+52%) - S/S 2026 키 컬러
-
-**시즌별 추천**
-- S/S 2026: Soft Pink, Coral, Mauve
-- F/W 2026: Terracotta, Brick Red, Berry
-
-**💄 립 제품**: Dusty Rose 계열 MLBB 라인 추천
-        """
-    }
-
+    # 추천 질문 버튼
     st.markdown("##### 💡 추천 질문")
     col1, col2, col3, col4, col5 = st.columns(5)
     with col1:
-        if st.button("바쿠치올", use_container_width=True):
-            st.session_state['chat_input'] = "바쿠치올"
+        if st.button("🧪 바쿠치올", key="btn_bakuchiol", use_container_width=True):
+            st.session_state['pending_query'] = "바쿠치올 트렌드 분석해줘"
     with col2:
-        if st.button("트렌드", use_container_width=True):
-            st.session_state['chat_input'] = "트렌드"
+        if st.button("📈 트렌드", key="btn_trend", use_container_width=True):
+            st.session_state['pending_query'] = "2026년 뷰티 트렌드 전망"
     with col3:
-        if st.button("펩타이드", use_container_width=True):
-            st.session_state['chat_input'] = "펩타이드"
+        if st.button("🎨 컬러", key="btn_color", use_container_width=True):
+            st.session_state['pending_query'] = "2026 컬러 트렌드 분석"
     with col4:
-        if st.button("경쟁사", use_container_width=True):
-            st.session_state['chat_input'] = "경쟁사"
+        if st.button("🏢 경쟁사", key="btn_competitor", use_container_width=True):
+            st.session_state['pending_query'] = "경쟁사 신제품 분석"
     with col5:
-        if st.button("컬러", use_container_width=True):
-            st.session_state['chat_input'] = "컬러"
+        if st.button("📊 종합", key="btn_comprehensive", use_container_width=True):
+            st.session_state['pending_query'] = "종합 트렌드 리포트 생성"
 
     st.markdown("---")
 
-    default_input = st.session_state.get('chat_input', '')
-    user_input = st.text_input("질문을 입력하세요", value=default_input, placeholder="예: 바쿠치올 시장 전망은?")
+    # 대화 입력
+    col_input, col_btn = st.columns([5, 1])
+    with col_input:
+        pending = st.session_state.get('pending_query', '')
+        user_query = st.text_input(
+            "질문을 입력하세요",
+            value=pending,
+            placeholder="예: 바쿠치올 시장 전망은? / 경쟁사 신제품 분석해줘",
+            key="chat_input_field"
+        )
+    with col_btn:
+        send_btn = st.button("전송", type="primary", use_container_width=True)
 
-    if user_input:
-        response = """안녕하세요! BeautyTrend AI입니다. 🤖
+    # 대화 처리
+    if send_btn and user_query:
+        # pending_query 초기화
+        if 'pending_query' in st.session_state:
+            del st.session_state['pending_query']
 
-다음 키워드로 질문해주세요:
-- **바쿠치올**: 성분 트렌드 분석
-- **트렌드**: 2026 메가 트렌드
-- **펩타이드**: 안티에이징 성분
-- **경쟁사**: 신제품 동향
-- **컬러**: 컬러 트렌드
-        """
-        for key, val in chatbot_responses.items():
-            if key in user_input:
-                response = val
-                break
-        st.markdown(response)
-        if 'chat_input' in st.session_state:
-            del st.session_state['chat_input']
+        # 메시지 저장
+        st.session_state.chat_messages.append({"role": "user", "content": user_query})
+
+        # 에이전트 실행
+        with st.spinner("🤖 AI 에이전트 분석 중..."):
+            chat_orchestrator = get_orchestrator()
+            if AGENTS_AVAILABLE and chat_orchestrator:
+                try:
+                    response = run_agent_async(chat_orchestrator, user_query)
+                    agent_response = response.message
+
+                    # 에이전트 로그 저장
+                    st.session_state.agent_logs.append({
+                        "timestamp": datetime.now().isoformat(),
+                        "query": user_query,
+                        "agents_used": response.data.get("agents_used", []) if response.data else [],
+                        "execution_time": response.execution_time
+                    })
+                except Exception as e:
+                    agent_response = f"처리 중 오류가 발생했습니다: {str(e)}"
+            else:
+                agent_response = """## 👋 BeautyTrend AI 입니다!
+
+현재 에이전트 시스템이 초기화 중입니다.
+잠시 후 다시 시도해 주세요.
+
+**지원 기능:**
+- 성분 트렌드 분석 (바쿠치올, 펩타이드 등)
+- 2026 뷰티 메가 트렌드
+- 컬러 트렌드 분석
+- 경쟁사 신제품 모니터링
+"""
+
+        st.session_state.chat_messages.append({"role": "assistant", "content": agent_response})
+
+    # 대화 히스토리 표시
+    st.markdown("### 💬 대화")
+    chat_container = st.container()
+    with chat_container:
+        for msg in st.session_state.chat_messages[-10:]:  # 최근 10개만 표시
+            if msg["role"] == "user":
+                st.markdown(f"""
+                <div style="background: rgba(102, 126, 234, 0.2); border-radius: 12px; padding: 15px; margin: 10px 0; border-left: 4px solid #667eea;">
+                    <strong>👤 사용자</strong><br>
+                    {msg["content"]}
+                </div>
+                """, unsafe_allow_html=True)
+            else:
+                st.markdown(f"""
+                <div style="background: rgba(255,255,255,0.05); border-radius: 12px; padding: 15px; margin: 10px 0; border-left: 4px solid #10b981;">
+                    <strong>🤖 BeautyTrend AI</strong>
+                </div>
+                """, unsafe_allow_html=True)
+                st.markdown(msg["content"])
+
+    # 대화 초기화 버튼
+    col_clear, col_export = st.columns(2)
+    with col_clear:
+        if st.button("🗑️ 대화 초기화", use_container_width=True):
+            st.session_state.chat_messages = []
+            clear_orchestrator = get_orchestrator()
+            if clear_orchestrator:
+                clear_orchestrator.clear_history()
+            st.rerun()
+
+    with col_export:
+        if st.button("📥 에이전트 로그", use_container_width=True):
+            if st.session_state.agent_logs:
+                st.json(st.session_state.agent_logs[-5:])
+            else:
+                st.info("아직 로그가 없습니다.")
 
 # ============================================================
 # 푸터
@@ -833,7 +943,7 @@ with tab6:
 st.markdown("---")
 st.markdown("""
 <div class="footer-container">
-    <div style="font-size: 1.5rem; margin-bottom: 10px;">💄 BeautyTrend AI <span style="font-size: 0.9rem; color: rgba(255,255,255,0.5);">v3.5</span></div>
+    <div style="font-size: 1.5rem; margin-bottom: 10px;">💄 BeautyTrend AI <span style="font-size: 0.9rem; color: rgba(255,255,255,0.5);">v4.0</span></div>
     <div style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">Multi-Agent 기반 글로벌 뷰티 트렌드 예측 시스템</div>
     <div style="margin-top: 15px;">
         <span style="background: linear-gradient(135deg, #667eea, #764ba2); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;">🏆 AI INNOVATION CHALLENGE 2026</span>
