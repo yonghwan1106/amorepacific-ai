@@ -430,6 +430,26 @@ st.markdown("""
     /* ========================================
        FORM ELEMENTS - Refined Inputs
        ======================================== */
+    /* 폼 레이블 스타일 - 가시성 향상 */
+    .stSelectbox label,
+    .stMultiSelect label,
+    .stSlider label,
+    .stTextInput label,
+    .stNumberInput label {
+        color: #E8D5A8 !important;
+        font-family: var(--font-body) !important;
+        font-size: 0.9rem !important;
+        font-weight: 400 !important;
+        letter-spacing: 0.02em !important;
+    }
+
+    /* 슬라이더 숫자 값 */
+    .stSlider [data-testid="stTickBarMin"],
+    .stSlider [data-testid="stTickBarMax"],
+    .stSlider div[data-testid="stThumbValue"] {
+        color: #C9A962 !important;
+    }
+
     .stSelectbox > div > div,
     .stMultiSelect > div > div {
         background: rgba(255,255,255,0.03);
@@ -472,6 +492,12 @@ st.markdown("""
     .stSlider > div > div > div[role="slider"] {
         background: var(--color-gold) !important;
         border: 3px solid var(--color-charcoal) !important;
+    }
+
+    /* 슬라이더 min/max 텍스트 */
+    .stSlider p,
+    .stSlider span {
+        color: rgba(232, 213, 168, 0.8) !important;
     }
 
     /* ========================================
