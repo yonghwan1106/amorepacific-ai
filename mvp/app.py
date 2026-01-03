@@ -176,13 +176,11 @@ st.markdown("""
         font-weight: 300;
         letter-spacing: 0.08em;
         text-transform: uppercase;
-        background: var(--gradient-gold);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: #C9A962 !important;
         text-align: center;
         padding: 30px 0 10px 0;
         animation: fadeInUp 1s ease-out;
+        text-shadow: 0 0 40px rgba(201,169,98,0.3);
     }
 
     .sub-header {
