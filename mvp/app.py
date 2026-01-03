@@ -489,10 +489,10 @@ st.markdown("""
 
     .stTextInput > div > div > input {
         font-family: var(--font-body);
-        background: rgba(255,255,255,0.03);
+        background: rgba(255,255,255,0.05);
         border: 1px solid rgba(201,169,98,0.2);
         border-radius: 12px;
-        color: var(--color-text-light);
+        color: #F5F0EB !important;
         padding: 14px 18px;
         transition: all 0.3s ease;
     }
@@ -500,10 +500,17 @@ st.markdown("""
     .stTextInput > div > div > input:focus {
         border-color: var(--color-gold);
         box-shadow: 0 0 0 2px rgba(201,169,98,0.1);
+        color: #FFFFFF !important;
     }
 
     .stTextInput > div > div > input::placeholder {
-        color: var(--color-warm-gray);
+        color: rgba(201,169,98,0.5) !important;
+    }
+
+    /* 텍스트 입력 값 색상 강화 */
+    .stTextInput input[type="text"] {
+        color: #FFFFFF !important;
+        -webkit-text-fill-color: #FFFFFF !important;
     }
 
     /* ========================================
