@@ -469,7 +469,48 @@ st.markdown("""
 
     /* 일반 텍스트 p 태그 */
     .stMarkdown p {
-        color: rgba(245, 240, 235, 0.85);
+        color: rgba(245, 240, 235, 0.9) !important;
+        line-height: 1.7;
+    }
+
+    /* AI 채팅 응답 마크다운 가독성 강화 */
+    .stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4 {
+        color: #E8D5A8 !important;
+        margin-top: 1.2em;
+        margin-bottom: 0.6em;
+    }
+
+    .stMarkdown ul, .stMarkdown ol {
+        color: rgba(245, 240, 235, 0.9) !important;
+    }
+
+    .stMarkdown li {
+        color: rgba(245, 240, 235, 0.9) !important;
+        line-height: 1.8;
+        margin-bottom: 0.4em;
+    }
+
+    .stMarkdown strong, .stMarkdown b {
+        color: #E8D5A8 !important;
+        font-weight: 600;
+    }
+
+    .stMarkdown em, .stMarkdown i {
+        color: rgba(232, 213, 168, 0.9) !important;
+    }
+
+    .stMarkdown code {
+        background: rgba(201, 169, 98, 0.15) !important;
+        color: #E8D5A8 !important;
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+
+    .stMarkdown blockquote {
+        border-left: 3px solid #C9A962;
+        padding-left: 16px;
+        color: rgba(245, 240, 235, 0.85) !important;
+        font-style: italic;
     }
 
     .stSelectbox > div > div,
