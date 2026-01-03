@@ -435,7 +435,9 @@ st.markdown("""
     .stMultiSelect label,
     .stSlider label,
     .stTextInput label,
-    .stNumberInput label {
+    .stNumberInput label,
+    .stSelectSlider label,
+    [data-testid="stWidgetLabel"] {
         color: #E8D5A8 !important;
         font-family: var(--font-body) !important;
         font-size: 0.9rem !important;
@@ -448,6 +450,28 @@ st.markdown("""
     .stSlider [data-testid="stTickBarMax"],
     .stSlider div[data-testid="stThumbValue"] {
         color: #C9A962 !important;
+    }
+
+    /* 멀티셀렉트 태그/칩 스타일 */
+    .stMultiSelect [data-baseweb="tag"] {
+        background: linear-gradient(135deg, rgba(201,169,98,0.3) 0%, rgba(201,169,98,0.2) 100%) !important;
+        border: 1px solid rgba(201,169,98,0.4) !important;
+        color: #E8D5A8 !important;
+    }
+
+    .stMultiSelect [data-baseweb="tag"] span {
+        color: #E8D5A8 !important;
+    }
+
+    /* Select Slider (Price Tier 등) */
+    [data-testid="stTickBar"] span,
+    .stSlider [data-baseweb="slider"] + div span {
+        color: rgba(232, 213, 168, 0.8) !important;
+    }
+
+    /* 일반 텍스트 p 태그 */
+    .stMarkdown p {
+        color: rgba(245, 240, 235, 0.85);
     }
 
     .stSelectbox > div > div,
